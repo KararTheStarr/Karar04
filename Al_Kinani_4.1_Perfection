@@ -1,0 +1,40 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Prompt user to enter a number 
+        Console.WriteLine("Please enter a number:");
+
+        // get input 
+        int number = int.Parse(Console.ReadLine());
+
+        // check if number is perfect
+        if (IsPerfect(number))
+        {
+            Console.WriteLine("Perfect number");
+        }
+        else
+        {
+            Console.WriteLine("Not a perfect number");
+        }
+    }
+       // Formula to find perfect number 
+    static bool IsPerfect(int num)
+    {
+        int sum = 0;
+
+        // calculate the sum of divisors
+        for (int i = 1; i < num; i++)
+        {
+            if (num % i == 0)
+            {
+               sum += i;
+            }
+        }
+        // check if sum is equal to number
+        return sum == num;
+    }
+
+}
