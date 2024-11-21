@@ -1,0 +1,62 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Arrays for intitials and sales
+        char[] initials = { 'D', 'E', 'F' };
+        int[] salesTotals = new int[3]; // Array for sales totals, initialized to 0
+        int grandTotal = 0;
+
+        while (true)
+        {
+            // Prompt for salesperson's initial
+            Console.WriteLine("Enter salesperson's initial (D, E, F) or Z to quit:");
+            string input = Console.ReadLine();
+
+            // Quit if 'Z' or 'z' is entered
+            if (input.ToUpper() == "Z")
+                break;
+                
+            // Validate the initial with the array
+            int index = Array.IndexOf(initials, char.ToUpper(input[0]));
+            if (index != -1) // If the input matches an initial in the array
+            {
+                Console.WriteLine("Enter sale amount:");
+                string saleInput = Console.ReadLine();
+
+                // Make sure sale ammount is positive 
+                if (int.TryParse(saleInput, out int saleAmount) && saleAmount > 0)
+                {
+                    // Add the sale to the correct salesperson's total
+                    salesTotals[index] += saleAmount;
+                    grandTotal += saleAmount;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid sale amount. Please enter a positive number.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error, invalid salesperson selected, please try again.");
+            }
+        }
+
+        // Display the grand total
+        Console.WriteLine($"\nGrand total: ${grandTotal}");
+
+        // Display the highest salesperson's initials
+        int highestIndex = 0;
+        for (int i = 1; i < salesTotals.Length; i++)
+        {
+            if (salesTotals[i] > salesTotals[highestIndex])
+            {
+                highestIndex = i;
+            }
+        }
+
+        Console.WriteLine($"Highest Sale: {initials[highestIndex]}");
+    }
+}
