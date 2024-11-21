@@ -1,0 +1,58 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Imitilization
+        int danielleTotal = 0, edwardTotal = 0, francisTotal = 0, grandTotal = 0;
+
+        while (true)
+        {
+            // Prompt user to enter initials
+            Console.WriteLine("Enter salesperson's initial (D, E, F) or Z to quit:");
+            string salesperson = Console.ReadLine();
+
+            // Stop looping when 'Z' or 'z' is entered
+            if (salesperson == "Z" || salesperson == "z")
+                break;
+
+            // Only accept "D", "E", "F", or "d", "e", "f""
+            if (salesperson == "D" || salesperson == "d" || salesperson == "E" || salesperson == "e" || salesperson == "F" || salesperson == "f")
+            {
+                Console.WriteLine("Enter sale amount:");
+                if (int.TryParse(Console.ReadLine(), out int saleAmount) && saleAmount > 0)
+                {
+                    // Update totals based on salesperson
+                    if (salesperson == "D" || salesperson == "d")
+                        danielleTotal += saleAmount;
+                    else if (salesperson == "E" || salesperson == "e")
+                        edwardTotal += saleAmount;
+                    else
+                        francisTotal += saleAmount;
+
+                    grandTotal += saleAmount; // Update grand total
+                }
+                else
+                {
+                    Console.WriteLine("Invalid sale amount. Please try again.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error, invalid salesperson selected, please try again.");
+            }
+        }
+
+        // Display grand total only 
+        Console.WriteLine($"Grand total: ${grandTotal}");
+
+        // Display the highest salesperson's initials
+        if (danielleTotal >= edwardTotal && danielleTotal >= francisTotal && danielleTotal > 0)
+            Console.WriteLine("Highest Sale: D");
+        else if (edwardTotal >= danielleTotal && edwardTotal >= francisTotal && edwardTotal > 0)
+            Console.WriteLine("Highest Sale: E");
+        else if (francisTotal > 0)
+            Console.WriteLine("Highest Sale: F");
+    }
+}
