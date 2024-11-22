@@ -1,0 +1,52 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Declare an array to store last 5 tempertures
+        int[] temperatures = new int[5];
+        int sum = 0;
+
+        // loop for tempertures
+        for (int i = 0; i < temperatures.Length; i++)
+        {
+            while (true)
+            {
+                Console.Write($"INPUT temperature: ");
+                if (int.TryParse(Console.ReadLine(), out int temp) && temp >= -30 && temp <= 130) // set range for temperture
+                {
+                    temperatures[i] = temp; // Store valid temperature
+                    sum += temp;           // Add to total sum
+                    break;
+                }
+Console.WriteLine($"EXCEPTION Temperature {temp} is invalid, Please enter a valid temperature between -30 and 130"); 
+            }
+        }
+
+        // Determine the trend (ascending, descending, or mixed)
+        bool ascending = true, descending = true;
+        for (int i = 1; i < temperatures.Length; i++)
+        {
+            if (temperatures[i] > temperatures[i - 1]) descending = false;
+            if (temperatures[i] < temperatures[i - 1]) ascending = false;
+        }
+
+        // Display the trend 
+        if (ascending)
+            Console.WriteLine($"OUTPUT Getting Warmer");
+        else if (descending)
+            Console.WriteLine($"OUTPUT Getting Cooler");
+        else
+            Console.WriteLine($"OUTPUT It's a mixed bag");
+
+        // Display last 5 tempertures
+        Console.WriteLine($"OUTPUT 5-day Temperature: [{string.Join(", ", temperatures)}]");
+
+        // Calculate the average temperature
+        double average = (double)sum / temperatures.Length;
+        Console.WriteLine(average % 1 == 0
+            ? $"OUTPUT Average Temperature is {average:0} degrees"
+            : $"OUTPUT Average Temperature is {average:F1} degrees");
+    }
+}
