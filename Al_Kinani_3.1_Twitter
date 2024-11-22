@@ -1,0 +1,27 @@
+sing System;
+
+class Program
+{
+    static void Main()
+    {
+    // message 
+    string message;
+
+    // prompt user to enter message
+    Console.WriteLine("Please enter your message:");
+        message = Console.ReadLine();
+        
+    // get length of message
+    int messageLength = message.Length;
+
+    // check if message <= 140
+    if (messageLength <= 140)
+    {
+     Console.WriteLine("Posted");
+    }    
+        else 
+    {
+        Console.WriteLine("Rejected");
+    }    
+    }
+}
