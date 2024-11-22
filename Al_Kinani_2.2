@@ -1,0 +1,30 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // message variable
+        const double BASE_RATE = 200;
+        const double HOURLY_RATE = 150;
+        const double MILES_PER_HOUR = 2;
+
+        // Declare variables value 
+        double hours;
+        double miles;
+        double totalFee;
+
+        // Prompt user for hours and miles
+        Console.Write("Please enter the number of hours: ");
+        hours = double.Parse(Console.ReadLine());
+        Console.Write("Please enter the number of miles involved in the move: ");
+        miles = double.Parse(Console.ReadLine());
+
+        // Calculate the total fee
+        totalFee = BASE_RATE + (hours * HOURLY_RATE) + (miles * MILES_PER_HOUR);
+
+        // Output total fee
+        Console.WriteLine("The total fee for the move is {0:C}", totalFee);
+        
+    }
+}
