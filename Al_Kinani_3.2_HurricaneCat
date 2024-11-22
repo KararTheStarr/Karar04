@@ -1,0 +1,40 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+    // Variable for windspeed
+    double windSpeed = 0;
+
+    // Prompt user to input wind speed 
+    Console.WriteLine("Please enter wind speed in mph:");
+    windSpeed = Convert.ToDouble(Console.ReadLine());
+        
+    // Determine category using Saffir-Simpson Hurricane scale 
+    if (windSpeed >= 157)
+    {
+       Console.WriteLine("Catergory Five Hurricane");
+    }
+        else if (windSpeed >= 130)
+    {
+        Console.WriteLine("Catergory Four Hurricane");
+    }    
+        else if (windSpeed >= 111)
+    {
+        Console.WriteLine("Catergory Three Hurricane");
+    }    
+        else if (windSpeed >= 96)
+    {
+        Console.WriteLine("Catergory Two Hurricane");
+    }    
+        else if (windSpeed >= 74)
+    {
+        Console.WriteLine("Catergory One Hurricane");
+    }
+        else 
+    {
+        Console.WriteLine("Not a Hurricane");
+    }    
+    }    
+    }
