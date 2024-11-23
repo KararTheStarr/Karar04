@@ -1,0 +1,73 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        while (true)
+        {
+            // Display the Greenville motto
+            Console.WriteLine("******************************");
+            Console.WriteLine("*  The stars shine in Greenville. *");
+            Console.WriteLine("******************************");
+            Console.WriteLine(); // Blank line for separation
+
+            // Display the menu
+            Console.WriteLine("Please enter the following number below from the following menu:");
+            Console.WriteLine(); // Blank line for separation
+            Console.WriteLine("1. CALCULATE Greenville Revenue Year-Over-Year");
+            Console.WriteLine("2. Exit");
+            Console.WriteLine(); // Blank line for separation
+
+            // Get user's choice
+            Console.Write("Please, enter your choice: ");
+            string input = Console.ReadLine();
+            Console.WriteLine(); // Blank line for separation
+
+            // Validate user's choice
+            if (int.TryParse(input, out int menuOption))
+            {
+                if (menuOption == 1)
+                {
+                    // Collect input for contestants
+                    Console.Write("Please, enter the number of contestants last year: ");
+                    int lastYearContestants = int.Parse(Console.ReadLine());
+                    Console.WriteLine(); // Blank line for separation
+
+                    Console.Write("Please, enter the number of contestants this year: ");
+                    int thisYearContestants = int.Parse(Console.ReadLine());
+                    Console.WriteLine(); // Blank line for separation
+
+                    // Calculate revenue
+                    int revenue = thisYearContestants * 25;
+                    bool isBigger = thisYearContestants > lastYearContestants;
+
+                    // Display results when 
+                Console.WriteLine($"Last year's competition had {lastYearContestants} contestants, and this year's has {thisYearContestants} contestants.");
+                    Console.WriteLine($"Revenue expected this year is ${revenue:N0}");
+                    Console.WriteLine(isBigger
+                        ? "It is true that this year's competition is bigger than last year's."
+                        : "It is false that this year's competition is bigger than last year's.");
+                    Console.WriteLine(); // Blank line for separation
+                }
+                else if (menuOption == 2)
+                {
+                    // Exit the program
+                    Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
+                    Console.WriteLine(); // Blank line for separation
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid option. Please select 1 or 2.");
+                    Console.WriteLine(); // Blank line for separation
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+                Console.WriteLine(); // Blank line for separation
+            }
+        }
+    }
+}
