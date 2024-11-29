@@ -1,0 +1,113 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Variable to track the largest number of contestants in any year
+        int maxContestants = 0;
+
+        while (true)
+        {
+            // Display the Greenville motto
+            Console.WriteLine("******************************");
+            Console.WriteLine("*  The stars shine in Greenville. *");
+            Console.WriteLine("******************************");
+            Console.WriteLine(); // Blank line for separation
+
+            // Display the menu
+            Console.WriteLine("Please enter the following number below from the following menu:");
+            Console.WriteLine(); // Blank line for separation
+            Console.WriteLine("1. CALCULATE Greenville Revenue Year-Over-Year");
+            Console.WriteLine("2. Exit");
+            Console.WriteLine(); // Blank line for separation
+
+            // Get user's choice
+            Console.Write("Please, enter your choice: ");
+            string input = Console.ReadLine();
+            Console.WriteLine(); // Blank line for separation
+
+            // Validate user's choice
+            if (int.TryParse(input, out int menuOption))
+            {
+                if (menuOption == 1)
+                {
+                    // Get valid input for last year's contestants
+                    int lastYearContestants = GetValidContestantInput("Please, enter the number of contestants last year must be between 0 and 30: ");
+
+                    // Get valid input for this year's contestants
+                    int thisYearContestants = GetValidContestantInput("Please, enter the number of contestants this year must be between 0 and 30: ");
+
+                    // Update the maximum number of contestants in any year
+                    if (thisYearContestants > maxContestants)
+                    {
+                        maxContestants = thisYearContestants;
+                    }
+
+                    // Calculate revenue
+                    int revenue = thisYearContestants * 25;
+
+                    // Display results
+                    Console.WriteLine($"Last year's competition had {lastYearContestants} contestants, and this year's has {thisYearContestants} contestants.");
+                    Console.WriteLine($"Revenue expected this year is ${revenue:N0}");
+
+                    // Determine and display the competition status
+                    if (thisYearContestants >= 2 * lastYearContestants)
+                    {
+                Console.WriteLine("The competition is more than twice as big this year!");
+                    }
+                    else if (thisYearContestants > lastYearContestants)
+                    {
+                        if (thisYearContestants >= maxContestants)
+                        {
+                            Console.WriteLine("The competition is bigger than ever!");
+                        }
+                        else
+                        {
+                Console.WriteLine("A tighter race this year! Come out and cast your vote!");
+                        }
+                    }
+                    else
+                    {
+                Console.WriteLine("A tighter race this year! Come out and cast your vote!");
+                    }
+
+                    Console.WriteLine(); // Blank line for separation
+                }
+                else if (menuOption == 2)
+                {
+                    // Exit the program
+            Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
+                    Console.WriteLine(); // Blank line for separation
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid option. Please select 1 or 2.");
+                    Console.WriteLine(); // Blank line for separation
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+                Console.WriteLine(); // Blank line for separation
+            }
+        }
+    }
+
+    // Method to get a valid number of contestants 
+    static int GetValidContestantInput(string prompt)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+        if (int.TryParse(Console.ReadLine(), out int number) && number >= 0 && number <= 30)
+            {
+                Console.WriteLine(); // Blank line for separation
+                return number;
+            }
+            Console.WriteLine("Invalid input. Please enter a number between 0 and 30.");
+            Console.WriteLine(); // Blank line for separation
+        }
+    }
+}
