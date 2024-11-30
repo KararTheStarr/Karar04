@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Constants for Saffir-Simpson Hurricane Scale thresholds
+        const double WorldRecord = 216, Cat5 = 157, Cat4 = 130, Cat3 = 111, Cat2 = 96, Cat1 = 74;
+
+        while (true)
+        {
+            // Prompt user for input
+            Console.WriteLine("Please enter wind speed in mph (or type 'exit' to quit):");
+            string input = Console.ReadLine()?.Trim();
+
+            if (input?.ToLower() == "exit")
+            {
+                Console.WriteLine("Thank you for using the Hurricane Checker. Stay safe out there!");
+                break;
+            }
+
+            if (double.TryParse(input, out double windSpeed) && windSpeed >= 0)
+            {
+                string category = windSpeed >= WorldRecord ? "World Record Hurricane! 🚨" :
+                                  windSpeed >= Cat5 ? "Category Five Hurricane" :
+                                  windSpeed >= Cat4 ? "Category Four Hurricane" :
+                                  windSpeed >= Cat3 ? "Category Three Hurricane" :
+                                  windSpeed >= Cat2 ? "Category Two Hurricane" :
+                                  windSpeed >= Cat1 ? "Category One Hurricane" :
+                                  "Not a Hurricane";
+
+                Console.WriteLine(category);
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a positive number.");
+            }
+
+            Console.WriteLine(); // Blank line for seperation
+        }
+    }
+}
