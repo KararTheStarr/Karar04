@@ -1,0 +1,7 @@
+# Program to display the smallest deer species by hieght at shoulder level (HSL)
+print ("World's smallest deer species:")
+print ("1.Royal Antelope - HSL: 10 inches - Source: Swedish zoologist Carl Lingeus")
+print ("2.Pudu - HSL: 12-17 inches - Source: Cool Science Green")
+print ("3.Mouse Deer - HSL: 13 inches - Source: AZ Animal Staff")
+print ("4.Reeves' Muntjac - HSL: 16 inches - Columbus Zoo")
+print ("5.Leaf Muntjac - HSL - 20 inches - Anamilia")
